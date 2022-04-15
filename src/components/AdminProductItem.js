@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
-import {Button, Card, Container} from "react-bootstrap";
+import React from 'react';
+import {Button, Card} from "react-bootstrap";
+import ProductItem from "./ProductItem";
+import EditProduct from "./EditProduct";
 
-class ProductItem extends Component {
+class AdminProductItem extends ProductItem {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,45 +15,18 @@ class ProductItem extends Component {
 
     render() {
         return (
+            <div className={"d-flex"}>
                 <Card style={{width: '18rem'}} className={"m-1"}>
                     <Card.Body key={this.props.product.id}>
                         <Card.Title>{this.props.product.title}</Card.Title>
                         <Card.Text>{this.props.product.description}</Card.Text>
                         <Card.Text>{this.props.product.price} руб</Card.Text>
-                        <Button variant="primary" onClick={this.addToCart}>Купить</Button>
+                        <Button variant="primary" onClick={this.edit}>Изменить</Button>
                     </Card.Body>
                 </Card>
+                {this.state.showEditForm && <EditProduct product={this.props.product}/>}
+            </div>
         );
-    }
-
-    addToCart() {
-        let cart = [];
-        let position = {
-            id: this.props.product.id,
-            title: this.props.product.title,
-            description: this.props.product.description,
-            price: this.props.product.price,
-            discount: this.props.product.discount,
-            value: 1
-        }
-
-        if (localStorage.getItem('cart') !== null) {
-            cart = JSON.parse(localStorage.getItem('cart'));
-        }
-
-        let flag = false;
-        for (let i = 0; i < cart.length; i++) {
-            if (cart[i].id === this.props.product.id) {
-                cart[i].value += 1;
-                flag = true;
-            }
-        }
-
-        if (!flag) {
-            cart.push(position)
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     edit() {
@@ -59,4 +34,4 @@ class ProductItem extends Component {
     }
 }
 
-export default ProductItem;
+export default AdminProductItem;

@@ -4,7 +4,7 @@ import {Row} from "react-bootstrap";
 import ProductItem from "./ProductItem";
 import AdminProductItem from "./AdminProductItem";
 
-class ProductList extends Component {
+class AdminProductList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,4 +47,4 @@ class ProductList extends Component {
     }
 }
 
-export default ProductList;
+export default AdminProductList;

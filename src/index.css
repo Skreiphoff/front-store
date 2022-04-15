@@ -14,19 +14,43 @@ code {
 
 nav {
   display: flex;
+  width: 100%;
 }
 
 .nav {
   display: flex;
   margin-left: 20%;
   margin-right: 20%;
-  justify-content: space-between;
 }
 .auth {
-  margin-left: auto;
+  display: flex;
+  margin-left: 20%;
+  margin-right: 0;
+  justify-content: end;
 }
 nav a {
   margin: 25px;
   text-decoration: none;
   color: black;
+}
+
+nav span {
+  margin: 25px;
+  text-decoration: none;
+  color: black;
+}
+
+nav span:hover {
+  color: #4545fc;
+}
+
+.cart-position {
+  height: 100%;
+  border: 1px #c0c0c0 solid;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.cart_position_description {
+  text-align: start;
 }

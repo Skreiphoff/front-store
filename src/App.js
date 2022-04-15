@@ -1,16 +1,14 @@
 import './App.css';
-import Auth from "./components/Auth";
-import ProductCard from "./components/Card";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AppRouter from "./components/AppRouter";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Auth/>
-
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
+        <BrowserRouter>
+            <AppRouter/>
+        </BrowserRouter>
     </div>
   );
 }

@@ -1,16 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {authRoutes, publicRoutes} from "../routes";
 import {HOME_ROUTE} from "../utils/consts";
-import {Context} from "../index";
 import {Redirect, Route, Switch} from "react-router-dom";
 
 const AppRouter = () => {
-    const {user} = useContext(Context)
-    console.log(user)
     return (
         <div>
             <Switch >
-                {user.isAuth && authRoutes.map(({path, Component}) =>
+                {localStorage.getItem("userToken") !== null && localStorage.getItem("isAuth") && authRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} component={Component}/>
                 )}
                 {publicRoutes.map(({path, Component}) =>
